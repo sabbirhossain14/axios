@@ -15,7 +15,22 @@ function App() {
     data()
   },[])
 
-  console.log(user);
+  let [formData, setFormData] = useState({
+    firstname : " ",
+    lastname : " ",
+    email : " ",
+
+  })
+
+  let handleForm = (e) => {
+    let {name, value} = e.target
+    setFormData({...formData,[name]:value})
+  }
+  
+  let handleSubmit = () =>{
+    console.log(formData);
+  }
+
 
   return (
     <>
@@ -35,6 +50,13 @@ function App() {
           
           <h1>Loading......</h1>
         }
+      </div>
+
+      <div>
+        <input name='firstname' placeholder='First Name' onChange={handleForm} />
+        <input name='lastname' placeholder='Last Name' onChange={handleForm} />
+        <input name='email' placeholder='Email' onChange={handleForm} />
+        <button onClick={handleSubmit}>Submit</button>
       </div>
     </>
   )
